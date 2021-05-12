@@ -77,6 +77,7 @@
         camera.position.set(0, 0, 0);
         camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+        screen.orientation.lock();
 
         window.addEventListener("deviceorientation", handleOrientation, true);
         var alpha_prev, beta_prev, gamma_prev;
@@ -127,12 +128,12 @@
 
 
             if (flipped) {
-                scene.rotation.x = 90 + gamma * Math.PI / 180;
+                scene.rotation.x =  gamma * Math.PI / 180;
                 scene.rotation.y = -alpha * Math.PI / 180;
             }
             else {
                 scene.rotation.y = -alpha * Math.PI / 180;
-                scene.rotation.x = 90 + gamma * Math.PI / 180;
+                scene.rotation.x = gamma * Math.PI / 180;
             }
 
             // if( scene.rotation.x )
