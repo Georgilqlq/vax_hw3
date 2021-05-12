@@ -102,6 +102,8 @@
 
             var gammaRotation = e.gamma ? e.gamma * (Math.PI / 180) : 0;
             scene.rotation.y = gammaRotation;
+            var betaRotation = e.beta ? e.beta * (Math.PI / 180) : 0;
+            scene.rotation.x = betaRotation;
 
             // if( scene.rotation.x )
 
