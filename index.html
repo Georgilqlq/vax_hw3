@@ -40,27 +40,21 @@
         front_back.rotation.set(Math.PI / 2, 0, 0);
         scene.add(front_back);
 
-        geometry = new THREE.CylinderGeometry(0, 2, 5, 35);
-        material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-        var pointy = new THREE.Mesh(geometry, material);
-        // pointy.position.set(0, 0, -10);
-        // scene.add(pointy);
-
         var colors = ['black', 'red', 'magenta', 'orange', 'cyan', 'blue', 'yellow', 'purple', 'pink', 'white'];
         for (var i = 0; i < 10; i++) {
             var side1 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
-            var side2 = pointy.clone();
-            var side3 = pointy.clone();
-            var side4 = pointy.clone();
-            var side5 = pointy.clone();
-            var side6 = pointy.clone();
+            var side2 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
+            var side3 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
+            var side4 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
+            var side5 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
+            var side6 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
 
-            side1.material.color.set(colors[Math.floor(Math.random() * 10)]);
-            side2.material.color.set(colors[Math.floor(Math.random() * 10)]);
-            side3.material.color.set(colors[Math.floor(Math.random() * 10)]);
-            side4.material.color.set(colors[Math.floor(Math.random() * 10)]);
-            side5.material.color.set(colors[Math.floor(Math.random() * 10)]);
-            side6.material.color.set(colors[Math.floor(Math.random() * 10)]);
+            side1.material.color.set(colors[i]);
+            side2.material.color.set(colors[i]);
+            side3.material.color.set(colors[i]);
+            side4.material.color.set(colors[i]);
+            side5.material.color.set(colors[i]);
+            side6.material.color.set(colors[i]);
 
 
             side1.position.set(14, Math.floor(Math.random() * 28 - 14), Math.floor(Math.random() * 28 - 14));
@@ -96,55 +90,10 @@
                 scene.rotation.y = (-alpha * Math.PI / 180) - Math.PI;
                 scene.rotation.x = gamma * Math.PI / 180;
             }
-            // var gamma;
-            // if (event.gamma < 90 && event.gamma > -90) {
-            // gamma = event.gamma + 90;
-            // }
-            // else {
-            //     gamma = (scene.rotation.x / Math.PI * 180) + 1;
-            // }
-            console.log(event.gamma);
-            // console.log(event.beta);
-            // console.log(event.gamma);
-            // console.log(pointer.position.x);
-            // console.log(pointer.position.y);
-            // scene.rotation.x += event.gamma / 200;
-            // scene.rotation.y -= event.beta / 150;
-
-            // if (gamma_prev > gamma) {
-            //     scene.rotation.x += 0.1;
-            // }
-            // else if (gamma_prev < gamma) {
-            //     scene.rotation.x -= 0.1;
-            // }
-
-            // var gammaRotation = event.gamma ? event.gamma * (Math.PI / 180) : 0;
-            // scene.rotation.x = gammaRotation;
-            // var betaRotation = event.beta ? event.beta * (Math.PI / 180) : 0;
-            // scene.rotation.y = betaRotation;
-            // if (gamma < 0) {
-            //     scene.rotation.x = scene.rotation.x - gamma;
-            // }
-            // else {
-            // }
-
-
-
-
-
-
-            // if( scene.rotation.x )
-
-            alpha_prev = alpha;
-            beta_prev = beta;
-            gamma_prev = gamma;
-
         }
 
-
         function animate() {
-            // plane.rotation.set(t, t / 2, t / 3);
-            // scene.rotation.set(0, t, 0);
+
         }
     </script>
 </body>
