@@ -160,10 +160,7 @@ function vaxInitParallax(eyeSep = 1) {
         document.body.appendChild(stats.dom);
     }
 
-    if (typeof Physijs !== 'undefined')
-        scene = new Physijs.Scene();
-    else
-        scene = new THREE.Scene();
+    scene = new THREE.Scene();
     scene.background = new THREE.Color('white');
     renderer.setClearColor(new THREE.Color('red'));
 
