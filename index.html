@@ -77,7 +77,6 @@
         camera.position.set(0, 0, 0);
         camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-        screen.orientation.lock();
 
         window.addEventListener("deviceorientation", handleOrientation, true);
         var alpha_prev, beta_prev, gamma_prev;
@@ -118,23 +117,24 @@
             // }
             // else {
             // }
-            // if (Math.abs(-alpha * Math.PI / 180 - scene.rotation.y) == 180 && flipped == false) {
-            //     flipped = true;
-            // }
+            if (Math.abs(gamma * Math.PI / 180 - scene.rotation.x) == 180 && flipped == false) {
+                flipped = true;
+            }
 
-            // if (Math.abs(-alpha * Math.PI / 180 - scene.rotation.y) == 180 && flipped) {
-            //     flipped = false;
-            // }
+            if (Math.abs(gamma * Math.PI / 180 - scene.rotation.x) == 180 && flipped) {
+                flipped = false;
+            }
 
 
             if (flipped) {
-                scene.rotation.x =  gamma * Math.PI / 180;
+                scene.rotation.x = gamma * Math.PI / 180;
                 scene.rotation.y = -alpha * Math.PI / 180;
             }
             else {
                 scene.rotation.y = -alpha * Math.PI / 180;
                 scene.rotation.x = gamma * Math.PI / 180;
             }
+            console.log(flipped);
 
             // if( scene.rotation.x )
 
