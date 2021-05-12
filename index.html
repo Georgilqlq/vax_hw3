@@ -101,9 +101,9 @@
             // }
 
             var gammaRotation = event.gamma ? event.gamma * (Math.PI / 180) : 0;
-            scene.rotation.y = gammaRotation;
+            scene.rotation.x = gammaRotation;
             var betaRotation = event.beta ? event.beta * (Math.PI / 180) : 0;
-            scene.rotation.x = betaRotation;
+            scene.rotation.y = betaRotation;
 
             // if( scene.rotation.x )
 
