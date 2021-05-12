@@ -92,8 +92,8 @@
                 scene.rotation.x = gamma * Math.PI / 180;
             }
             else {
-                gamma = event.gamma;
-                scene.rotation.y = -alpha * Math.PI / 180;
+                gamma = event.gamma - 90;
+                scene.rotation.y = (-alpha * Math.PI / 180) -180;
                 scene.rotation.x = gamma * Math.PI / 180;
             }
             // var gamma;
