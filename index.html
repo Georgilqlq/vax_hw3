@@ -84,8 +84,15 @@
             var absolute = event.absolute;
             var alpha = event.alpha;
             var beta = event.beta;
-            var gamma = event.gamma;
-
+            // var gamma = event.gamma + 90;
+            var gamme;
+            if (event.gamma < 0) {
+                gamma = event.gamma + 90;
+            }
+            else{
+                gamma = -(event.gamma-90);
+            }
+            console.log(event.gamma);
             // console.log(event.beta);
             // console.log(event.gamma);
             // console.log(pointer.position.x);
@@ -108,7 +115,7 @@
             //     scene.rotation.x = scene.rotation.x - gamma;
             // }
             // else {
-                scene.rotation.x = gamma * Math.PI / 180;
+            scene.rotation.x = gamma * Math.PI / 180;
             // }
             scene.rotation.y = -alpha * Math.PI / 180;
 
