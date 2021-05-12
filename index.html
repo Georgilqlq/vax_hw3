@@ -20,11 +20,13 @@
         vaxInit();
         var top_bot = new THREE.Group();
         var geometry = new THREE.PlaneGeometry(30, 30);
-        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
+        var material = new THREE.MeshStandardMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
         var plane = new THREE.Mesh(geometry, material);
         plane.rotation.set(Math.PI / 2, 0, 0);
         plane.position.set(0, -15, 0);
+        plane.receiveShadow = true;
         top_bot.add(plane);
+
 
         var top_plane = plane.clone();
         top_plane.position.set(0, 15, 0);
@@ -48,6 +50,14 @@
             var side4 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
             var side5 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
             var side6 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
+
+            side1.castShadow = true;
+            side2.castShadow = true;
+            side3.castShadow = true;
+            side4.castShadow = true;
+            side5.castShadow = true;
+            side6.castShadow = true;
+
 
             side1.material.color.set(colors[i]);
             side2.material.color.set(colors[i]);
@@ -91,6 +101,14 @@
                 scene.rotation.x = gamma * Math.PI / 180;
             }
         }
+
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        var light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 0, 0);
+        light.castShadow = true; // default false
+        scene.add(light);
 
         function animate() {
 
