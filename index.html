@@ -12,12 +12,14 @@
     <script src="three.min.js"></script>
     <script src="stats.min.js"></script>
     <script src="WebGL.js"></script>
+    <script src="StereoEffect.js"></script>
     <script src="vax.js"></script>
 </head>
 
 <body>
     <script>
-        vaxInit();
+        // vaxInit();
+        vaxInitParallax();
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 

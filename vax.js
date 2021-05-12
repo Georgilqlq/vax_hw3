@@ -145,3 +145,66 @@ function robotElementShape(geometry, length, parent) {
 
     return object;
 }
+
+function vaxInitParallax(eyeSep = 1) {
+    if (!THREE.WEBGL.isWebGLAvailable())
+        alert(THREE.WEBGL.getWebGLErrorMessage());
+
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    document.body.appendChild(renderer.domElement);
+    document.body.style.margin = 0;
+    document.body.style.overflow = 'hidden';
+
+    if (typeof Stats !== 'undefined') {
+        stats = new Stats();
+        document.body.appendChild(stats.dom);
+    }
+
+    if (typeof Physijs !== 'undefined')
+        scene = new Physijs.Scene();
+    else
+        scene = new THREE.Scene();
+    scene.background = new THREE.Color('white');
+    renderer.setClearColor(new THREE.Color('red'));
+
+    clock = new THREE.Clock(true);
+
+    camera = new THREE.PerspectiveCamera(60, 1, 1, 10000);
+    camera.focalLength = 30;
+
+    camera.position.set(0, 0, 100);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+    light = new THREE.PointLight();
+    light.position.set(0, 150, 300);
+    scene.add(light);
+
+    effect = new THREE.StereoEffect(renderer);
+    effect.setSize(window.innerWidth, window.innerHeight);
+    effect.setEyeSeparation(eyeSep);
+
+
+    window.addEventListener('resize', onWindowResizeAnaglyph, false); // преизползваме анаглифния случай
+    onWindowResizeAnaglyph();
+
+    renderer.setAnimationLoop(frameAnaglyph); // преизползваме анаглифния случай
+}
+
+
+function onWindowResizeAnaglyph(event) {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    effect.setSize(window.innerWidth, window.innerHeight, true);
+}
+
+function frameAnaglyph() {
+    dT = clock.getDelta();
+    t = clock.getElapsedTime();
+
+    if (animate) animate();
+
+    if (stats) stats.update();
+
+    effect.render(scene, camera);
+}
