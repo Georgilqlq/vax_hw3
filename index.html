@@ -82,8 +82,8 @@
         function handleOrientation(event) {
             var absolute = event.absolute;
             var alpha = event.alpha;
-            var beta = event.beta - 90;
-            var gamma = event.gamma;
+            var beta = event.beta;
+            var gamma = event.gamma + 90;
 
             // console.log(event.beta);
             // console.log(event.gamma);
@@ -91,6 +91,8 @@
             // console.log(pointer.position.y);
             scene.rotation.x += event.gamma / 150;
             scene.rotation.y -= event.beta / 150;
+
+            // if( scene.rotation.x )
 
 
         }
