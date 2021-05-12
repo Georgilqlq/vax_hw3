@@ -18,6 +18,10 @@
 <body>
     <script>
         vaxInit();
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+
         var top_bot = new THREE.Group();
         var geometry = new THREE.PlaneGeometry(30, 30);
         var material = new THREE.MeshStandardMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
@@ -57,6 +61,13 @@
             side4.castShadow = true;
             side5.castShadow = true;
             side6.castShadow = true;
+
+            side1.receiveShadow = true;
+            side2.receiveShadow = true;
+            side3.receiveShadow = true;
+            side4.receiveShadow = true;
+            side5.receiveShadow = true;
+            side6.receiveShadow = true;
 
 
             side1.material.color.set(colors[i]);
@@ -102,9 +113,9 @@
             }
         }
 
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+
+        scene.remove(light);
         var light = new THREE.PointLight(0xffffff, 1, 100);
         light.position.set(0, 0, 0);
         light.castShadow = true; // default false
