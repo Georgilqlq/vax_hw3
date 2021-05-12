@@ -88,9 +88,13 @@
             var gamma;
             if (event.gamma < 0 && event.gamma > -90) {
                 gamma = event.gamma + 90;
+                scene.rotation.y = -alpha * Math.PI / 180;
+                scene.rotation.x = gamma * Math.PI / 180;
             }
             else {
                 gamma = event.gamma - 90;
+                scene.rotation.y = -alpha * Math.PI / 180;
+                scene.rotation.x = -gamma * Math.PI / 180;
             }
             // var gamma;
             // if (event.gamma < 90 && event.gamma > -90) {
@@ -127,8 +131,6 @@
 
 
 
-            scene.rotation.y = -alpha * Math.PI / 180;
-            scene.rotation.x = gamma * Math.PI / 180;
 
 
             // if( scene.rotation.x )
