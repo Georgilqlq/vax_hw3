@@ -46,7 +46,7 @@
         // pointy.position.set(0, 0, -10);
         // scene.add(pointy);
 
-        var colors = ['black', 'red', 'magenta', 'orange', 'cyan', 'blue', 'yellow','purple','pink','white'];
+        var colors = ['black', 'red', 'magenta', 'orange', 'cyan', 'blue', 'yellow', 'purple', 'pink', 'white'];
         for (var i = 0; i < 10; i++) {
             var side1 = new THREE.Mesh(new THREE.CylinderGeometry(0, 2, 5, 35), new THREE.MeshBasicMaterial());
             var side2 = pointy.clone();
@@ -78,9 +78,27 @@
         camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 
+        window.addEventListener("deviceorientation", handleOrientation, true);
+        function handleOrientation(event) {
+            var absolute = event.absolute;
+            var alpha = event.alpha;
+            var beta = event.beta;
+            var gamma = event.gamma;
+
+            // console.log(event.beta);
+            // console.log(event.gamma);
+            // console.log(pointer.position.x);
+            // console.log(pointer.position.y);
+            scene.rotation.x += event.gamma / 30;
+            scene.rotation.y -= event.beta / 30;
+
+
+        }
+
+
         function animate() {
             // plane.rotation.set(t, t / 2, t / 3);
-            scene.rotation.set(0, t, 0);
+            // scene.rotation.set(0, t, 0);
         }
     </script>
 </body>
