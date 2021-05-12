@@ -93,10 +93,10 @@
             // scene.rotation.x += event.gamma / 200;
             // scene.rotation.y -= event.beta / 150;
 
-            if (gamma_prev > gamma) {
+            if (gamma_prev > gamma && Math.abs(gamma_prev - gamma) > 2) {
                 scene.rotation.x += 0.1;
             }
-            else {
+            else if (gamma_prev < gamma && Math.abs(gamma_prev - gamma) > 2) {
                 scene.rotation.x -= 0.1;
             }
 
