@@ -79,6 +79,7 @@
 
 
         window.addEventListener("deviceorientation", handleOrientation, true);
+        var alpha_prev, beta_prev, gamma_prev;
         function handleOrientation(event) {
             var absolute = event.absolute;
             var alpha = event.alpha;
@@ -89,11 +90,21 @@
             // console.log(event.gamma);
             // console.log(pointer.position.x);
             // console.log(pointer.position.y);
-            scene.rotation.x += event.gamma / 150;
-            scene.rotation.y -= event.beta / 150;
+            // scene.rotation.x += event.gamma / 200;
+            // scene.rotation.y -= event.beta / 150;
+
+            if (gamma_prev > gamma) {
+                scene.rotation.x += 0.1;
+            }
+            else {
+                scene.rotation.x -= 0.1;
+            }
 
             // if( scene.rotation.x )
 
+            alpha_prev = alpha;
+            beta_prev = beta;
+            gamma_prev = gamma;
 
         }
 
