@@ -80,18 +80,19 @@
 
         window.addEventListener("deviceorientation", handleOrientation, true);
         var alpha_prev, beta_prev, gamma_prev;
+        var flipped = false;
         function handleOrientation(event) {
             var absolute = event.absolute;
             var alpha = event.alpha;
             var beta = event.beta;
-            // var gamma = event.gamma + 90;
-            var gamme;
-            if (event.gamma < 0) {
-                gamma = event.gamma + 90;
-            }
-            else{
-                gamma = -(event.gamma-90);
-            }
+            var gamma = event.gamma + 90;
+            // var gamma;
+            // if (event.gamma < 90 && event.gamma > -90) {
+            // gamma = event.gamma + 90;
+            // }
+            // else {
+            //     gamma = (scene.rotation.x / Math.PI * 180) + 1;
+            // }
             console.log(event.gamma);
             // console.log(event.beta);
             // console.log(event.gamma);
@@ -115,9 +116,23 @@
             //     scene.rotation.x = scene.rotation.x - gamma;
             // }
             // else {
-            scene.rotation.x = gamma * Math.PI / 180;
             // }
-            scene.rotation.y = -alpha * Math.PI / 180;
+            if (Math.abs(-alpha * Math.PI / 180 - scene.rotation.y) == 180 && flipped == false) {
+                flipped = true;
+            }
+
+            if (Math.abs(-alpha * Math.PI / 180 - scene.rotation.y) == 180 && flipped) {
+                flipped = false;
+            }
+
+            if (flipped) {
+                scene.rotation.x = -gamma * Math.PI / 180;
+                scene.rotation.y = alpha * Math.PI / 180;
+            }
+            else {
+                scene.rotation.y = -alpha * Math.PI / 180;
+                scene.rotation.x = gamma * Math.PI / 180;
+            }
 
             // if( scene.rotation.x )
 
