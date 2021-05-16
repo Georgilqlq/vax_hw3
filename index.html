@@ -97,12 +97,10 @@
 
 
         window.addEventListener("deviceorientation", handleOrientation, true);
-        var alpha_prev, beta_prev, gamma_prev;
         var flipped = false;
         function handleOrientation(event) {
             var absolute = event.absolute;
             var alpha = event.alpha;
-            var beta = event.beta;
             var gamma;
             if (event.gamma < 0 && event.gamma > -90) {
                 gamma = event.gamma + 90;
@@ -121,7 +119,7 @@
         scene.remove(light);
         var light = new THREE.PointLight(0xffffff, 1, 100);
         light.position.set(0, 0, 0);
-        light.castShadow = true; // default false
+        light.castShadow = true; 
         scene.add(light);
 
         function animate() {
