@@ -19,7 +19,7 @@
 <body>
     <script>
         // vaxInit();
-        vaxInitParallax(0.5);
+        vaxInitParallax();
 
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -97,9 +97,7 @@
 
 
         window.addEventListener("deviceorientation", handleOrientation, true);
-        var flipped = false;
         function handleOrientation(event) {
-            var absolute = event.absolute;
             var alpha = event.alpha;
             var gamma;
             if (event.gamma < 0 && event.gamma > -90) {
